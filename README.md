@@ -1,76 +1,118 @@
-Laravel Salat Time Notifier
-Overview
+<br/> <div align="center"> <h3 align="center">Laravel Salat Time Notifier</h3> <p align="center"> A Laravel package to manage Salat (prayer) times and send notifications to a Slack channel. <br/> <a href="https://github.com/yourusername/laravel-salat-notifier"><strong>Explore the docs »</strong></a> <br/> <br/> <a href="https://github.com/yourusername/laravel-salat-notifier/issues/new?labels=bug&template=bug_report.md">Report Bug .</a> <a href="https://github.com/yourusername/laravel-salat-notifier/issues/new?labels=enhancement&template=feature_request.md">Request Feature</a> </p> </div>
+Table of Contents
 
-The Laravel Salat Time Notifier package provides a solution for managing Salat (prayer) times and sending notifications to a Slack channel 10 minutes before each Salat time. This package includes an interface to manage Salat times, integrates with a Slack channel for notifications, and can be easily integrated into a fresh Laravel project.
-Features
+    About The Project
+        Built With
+    Getting Started
+        Prerequisites
+        Installation
+    Usage
+    Roadmap
+    Contributing
+    License
+    Contact
+    Acknowledgments
 
-    Manage Salat times (Fajr, Dhuhr, Asr, Maghrib, Isha) through a user-friendly interface.
-    Send notifications to a Slack channel 10 minutes before each Salat time.
-    Seamless integration into a Laravel project using Composer.
+About The Project
+
+This Laravel package allows you to manage Salat (prayer) times and sends notifications to a Slack channel 10 minutes before each Salat time. The package is easily integrated into any Laravel project and can be set up quickly to ensure timely reminders for prayers.
+Built With
+
+This project was built using:
+
+    Laravel
+    Slack API
+
+Getting Started
+
+To get a local copy up and running, follow these simple steps.
+Prerequisites
+
+You need to have the following installed:
+
+    PHP 8.1 or higher
+    Composer
+    MySQL
+    A Slack workspace with a channel named #salat-times
 
 Installation
 
-    Set Up the Package:
+    Clone the Repository:
 
-    Clone the repository and place it in the packages directory of your Laravel project.
+    sh
 
-    bash
+git clone https://github.com/yourusername/laravel-salat-notifier.git
 
-git clone <repository-url> packages/welabs/SalatNotifier
+Navigate to the Project Directory:
 
-Integrate the Package Using Symlink:
+sh
 
-In your Laravel project root, create a symlink to the package directory.
+cd laravel-salat-notifier
 
-bash
+Install Dependencies:
 
-composer require <vendor/package>
+sh
 
-Publish the Configuration:
+composer install
 
-After installation, publish the package configuration.
+Set Up Environment:
 
-bash
-
-php artisan vendor:publish --provider="Welabs\SalatNotifier\SalatNotifierServiceProvider"
+    Copy .env.example to .env
+    Configure your database settings and Slack webhook URL in the .env file.
 
 Run Migrations:
 
-Run the migrations to set up the necessary database tables.
-
-bash
+sh
 
 php artisan migrate
 
-Run the Seeder:
+Symlink the Package:
 
-Manually run the seeder to populate initial data.
+    Ensure the package is placed in a packages directory.
+    Use Composer to create a symlink and autoload the package.
 
-bash
+sh
 
-php artisan db:seed --class=Welabs\\SalatNotifier\\Seeders\\SalatTimeSeeder
+composer config repositories.salat-notifier path packages/welabs/salat-notifier
+composer require welabs/salat-notifier:dev-main
 
-Schedule Notifications:
+Run the Project:
 
-Ensure your Laravel scheduler is running and add the following to your app/Console/Kernel.php file if it hasn't been automatically added.
+sh
 
-php
-
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('salat:notify')->everyMinute()->timezone('Asia/Dhaka');
-    }
+    php artisan serve
 
 Usage
 
-    Access the Salat Times Interface:
+After setting up, the package will automatically send notifications to the Slack channel #salat-times 10 minutes before each prayer time. You can manage Salat times using the CRUD interface provided.
+Roadmap
 
-    Navigate to the Salat times management interface using the route salat-times.index in your Laravel application.
+Slack Notification Integration
+CRUD Operations for Salat Times
+Multi-language Support
 
-    Configure Slack Notifications:
+    Additional Notification Channels (Email, SMS)
 
-    Set up Slack notifications by configuring the Slack channel and webhook in your .env file.
+Contributing
 
-    env
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-SLACK_WEBHOOK_URL=https://hooks.slack.com/services/your/webhook/url
+    Fork the Project
+    Create your Feature Branch (git checkout -b feature/AmazingFeature)
+    Commit your Changes (git commit -m 'Add some AmazingFeature')
+    Push to the Branch (git push origin feature/AmazingFeature)
+    Open a Pull Request
+
+License
+
+Distributed under the MIT License. See LICENSE for more information.
+Contact
+
+Your Name - @yourusername - your.email@example.com
+
+Project Link: https://github.com/yourusername/laravel-salat-notifier
+Acknowledgments
+
+    Laravel
+    Slack API
+    Othneil Drew's Best-README-Template
